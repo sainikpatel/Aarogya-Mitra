@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arogya Mitra — AI Wellness Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="notificationBanner" class="notification"></div>
+
+<header class="site-header">
+    <div class="brand" onclick="showSection('home')">
+        <div class="logo">🩺</div>
+        <div>
+            <h1>Arogya Mitra</h1>
+            <div style="font-size:12px;opacity:0.95">AI Wellness Companion</div>
+        </div>
+    </div>
+    <nav class="navlinks" aria-label="Main Navigation">
+        <a href="#home" onclick="showSection('home')">🏠 Home</a>
+        <a href="#reminders" onclick="showSection('reminders')">🔔 Reminders</a>
+        <a href="#firstaid" onclick="showSection('firstaid')">🚑 First-Aid</a>
+    </nav>
+    <div class="controls">
+        <select id="languageSelector">
+            <option value="english">English</option>
+            <option value="hindi">हिंदी</option>
+            <option value="telugu">తెలుగు</option>
+        </select>
+        <button class="icon-btn" id="darkModeToggle" title="Dark Mode">🌙</button>
+    </div>
+</header>
+
+<main class="container">
+    <section id="home" class="block visible">
+        <div class="hero">
+            <div class="hero-left">
+                <h2>Empowering Wellness Through Smart Understanding</h2>
+                <p>Upload your prescription to get a simple, clear wellness plan in your language.</p>
+                <div class="cta-row">
+                    <button class="btn-primary" id="uploadBtn">📷 Upload Prescription</button>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img src="https://www.shutterstock.com/image-vector/male-doctors-white-medical-coats-600nw-2380152965.jpg" class="floating" alt="Arogya Mitra illustration">
+            </div>
+        </div>
+        <div id="prescriptionResult" class="results-section"></div>
+    </section>
+
+    <section id="reminders" class="block">
+        <div class="section-title">
+            <span class="icon">🔔</span>
+            <h3>Manage Your Reminders</h3>
+        </div>
+        <form id="reminderForm">
+            <div class="form-group">
+                <label for="medName">Medicine Name</label>
+                <input type="text" id="medName" placeholder="e.g., Paracetamol" required>
+            </div>
+            <div class="form-group">
+                <label for="medDosage">Dosage (Optional)</label>
+                <input type="text" id="medDosage" placeholder="e.g., 500mg">
+            </div>
+            <div class="form-group">
+                <label for="medTime">Time</label>
+                <input type="time" id="medTime" required>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;margin-top:10px;">Add Reminder</button>
+        </form>
+        <div class="reminder-list" id="remindersList"></div>
+    </section>
+
+    <section id="firstaid" class="block">
+        <div class="section-title">
+            <span class="icon">🚑</span>
+            <h3>Emergency First-Aid</h3>
+        </div>
+        <div class="card-grid" id="firstAidCases"></div>
+        <div id="firstAidInstructions" class="results-section" style="margin-top: 20px;"></div>
+    </section>
+</main>
+
+<div class="ai-assistant">
+    <div class="avatar" id="chatAvatar">💬</div>
+    <div class="chat-bubble" id="chatBubble">
+        <p id="chatDefaultMsg">Hello! How can I help you today?</p>
+        <div id="chatHistory" style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
+        <input type="text" id="chatInput" placeholder="Ask a question..." style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+        <button id="sendChatBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">Send</button>
+    </div>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+<footer class="app-footer">
+    <p>&copy; 2025 Arogya Mitra. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
